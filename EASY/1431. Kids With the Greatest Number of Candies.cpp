@@ -36,20 +36,32 @@ n == candies.length
 1 <= candies[i] <= 100
 1 <= extraCandies <= 50*/
 
-class Solution {
+class Solution 
+{
 public:
-    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) 
+     {
+        vector<bool> arr;
+        int max=candies[0];
         
-        int a = *max_element (candies.begin(), candies.end());
-        vector<bool> ans;
-        
-        for(int i = 0;i<candies.size();i++){
-            
-         if(candies[i]+extraCandies >= a)
-             ans.push_back(true);
-            else
-               ans.push_back(false);
+        for(int i=0;i<candies.size();i++)
+        {
+            if(max<candies[i])
+            {
+                max=candies[i];
+            }
         }
-        return ans;
+        for(int i=0;i<candies.size();i++)
+        {
+            if((candies[i]+extraCandies)>=max)
+            {
+                arr.push_back(true);
+            }
+            else
+            {
+                arr.push_back(false);
+            }
+        }
+        return arr;
     }
 };
